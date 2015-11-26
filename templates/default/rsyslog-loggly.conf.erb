@@ -15,7 +15,7 @@ $InputRunFileMonitor
       <% if filename =~ /[\w\.-_\d]+\.log$/ %>
 $InputFileName <%= "#{logdir['directory']}/#{filename}" %>
 $InputFileTag <%= logdir['tag'] %>:
-$InputFileStateFile state-<%= filename %>
+$InputFileStateFile state-<%= logdir['statefile'] %>
 $InputRunFileMonitor
 
       <% end %>
