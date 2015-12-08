@@ -3,6 +3,8 @@
 <% if @monitor_files %>
 $ModLoad imfile
 
+$RepeatedMsgReduction off
+
 	<% node['loggly']['log_files'].each do |logfile| %>
 $InputFileName <%= logfile['filename'] %>
 $InputFileTag <%= logfile['tag'] %>:
