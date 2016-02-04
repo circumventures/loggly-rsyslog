@@ -21,3 +21,7 @@ default['loggly']['rsyslog']['host'] = 'logs-01.loggly.com'
 default['loggly']['rsyslog']['port'] = node['loggly']['tls']['enabled'] ? 6514 : 514
 
 default['loggly']['rsyslog']['input_file_poll_interval'] = 10
+
+default['loggly']['rsyslog']['workdirectory'] = '/var/spool/rsyslog'
+default['loggly']['rsyslog']['actionqueuefilename'] = node.name
+default['loggly']['rsyslog']['actionqueuemaxdiskspace'] = '1g'
