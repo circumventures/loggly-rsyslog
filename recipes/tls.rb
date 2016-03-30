@@ -31,7 +31,7 @@ remote_file 'download loggly.com cert' do
   path loggly_crt_path
   source node['loggly']['tls']['cert_url']
   checksum node['loggly']['tls']['cert_checksum']
-  notifies :run, 'restart[rsyslogd]', :immediately
+  notifies :run, 'restart[rsyslogd]', :delayed
 end
 
 # remote_file 'download intermediate cert' do
