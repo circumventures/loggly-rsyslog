@@ -9,6 +9,7 @@ default['loggly']['tls']['cert_url'] = 'https://logdog.loggly.com/media/logs-01.
 default['loggly']['tls']['cert_checksum'] = 'b562ae82b54b'
 # default['loggly']['tls']['intermediate_cert_url'] = 'https://certs.secureserver.net/repository/sf_bundle.crt'
 # default['loggly']['tls']['intermediate_cert_checksum'] = '87d171b3333c'
+
 default['loggly']['token']['from_databag'] = true
 default['loggly']['token']['databag'] = 'loggly'
 default['loggly']['token']['databag_item'] = 'token'
