@@ -3,7 +3,7 @@
 # Recipe:: tls
 #
 # Copyright (C) 2014 Matt Veitas
-# 
+#
 # All rights reserved - Do Not Redistribute
 #
 
@@ -31,6 +31,7 @@ remote_file 'download loggly.com cert' do
   path loggly_crt_path
   source node['loggly']['tls']['cert_url']
   checksum node['loggly']['tls']['cert_checksum']
+  notifies :run, 'execute[buildbundle]', :immediately
 end
 
 remote_file 'download intermediate cert' do
@@ -40,13 +41,13 @@ remote_file 'download intermediate cert' do
   path sf_bundle_path
   source node['loggly']['tls']['intermediate_cert_url']
   checksum node['loggly']['tls']['intermediate_cert_checksum']
+  notifies :run, 'execute[buildbundle]', :immediately
 end
-  
-bash 'bundle certificate' do
+
+execute 'buildbundle' do
   user 'root'
   cwd cert_path
-  code <<-EOH
-    cat {#{sf_bundle_path},#{loggly_crt_path}} > loggly_full.crt
-  EOH
-  not_if { ::File.exists?("#{node['loggly']['tls']['cert_path']}/loggly_full.crt") }
+  command "cat {#{sf_bundle_path},#{loggly_crt_path}} > loggly_full.crt"
+  creates node['loggly']['tls']['cert_path'] + '/loggly_full.crt'
+  action :nothing
 end
