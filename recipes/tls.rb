@@ -21,7 +21,7 @@ directory cert_path do
   recursive true
 end
 
-loggly_crt_path = "#{Chef::Config['file_cache_path']}/loggly.com.crt"
+loggly_crt_path = node['loggly']['tls']['cert_path'] + '/loggly.com.crt'
 # sf_bundle_path = "#{Chef::Config['file_cache_path']}/sf_bundle.crt"
 
 remote_file 'download loggly.com cert' do
