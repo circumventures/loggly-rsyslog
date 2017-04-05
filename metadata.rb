@@ -8,4 +8,4 @@ version          '2.1.3'
 
 supports 'ubuntu', '>= 12.04'
 
-depends 'rsyslog' # , "~> 1.5.0"
+depends 'rsyslog', '~> 6.0.1' # was "~> 1.5.0"
