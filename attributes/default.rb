@@ -25,3 +25,5 @@ default['loggly']['rsyslog']['input_file_poll_interval'] = 10
 default['loggly']['rsyslog']['workdirectory'] = '/var/spool/rsyslog'
 default['loggly']['rsyslog']['actionqueuefilename'] = node.name
 default['loggly']['rsyslog']['actionqueuemaxdiskspace'] = '1g'
+
+override['rsyslog']['repeated_msg_reduction'] = 'off'
